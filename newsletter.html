@@ -1,0 +1,128 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your weekly newsletter, done for you — kiln.works</title>
+<meta name="description" content="We research, write and send your B2B newsletter every week, in your voice. You just approve.">
+<style>
+:root{
+  --paper:#FBF8F4; --card:#FFFFFF; --ink:#1B1714; --slate:#5E574F; --faint:#938B81;
+  --line:#EBE5DC; --line2:#F2EDE5; --ember:#D9531E; --ember-ink:#B8410F; --ember-tint:#FCEDE4;
+  --ok:#15803D; --shadow:0 1px 0 rgba(0,0,0,.02),0 24px 60px -40px rgba(40,26,16,.55);
+}
+@media (prefers-color-scheme:dark){
+  :root{ --paper:#15120F; --card:#1E1A16; --ink:#F1ECE5; --slate:#B0A79C; --faint:#7C746A;
+    --line:#2C2620; --line2:#241F1A; --ember:#F26B33; --ember-ink:#F58A5B; --ember-tint:#2A180E;
+    --ok:#54D98A; --shadow:0 1px 0 rgba(0,0,0,.3),0 26px 64px -40px rgba(0,0,0,.75);}
+}
+:root[data-theme=light]{ --paper:#FBF8F4;--card:#FFFFFF;--ink:#1B1714;--slate:#5E574F;--faint:#938B81;--line:#EBE5DC;--line2:#F2EDE5;--ember:#D9531E;--ember-ink:#B8410F;--ember-tint:#FCEDE4;--ok:#15803D;}
+:root[data-theme=dark]{ --paper:#15120F;--card:#1E1A16;--ink:#F1ECE5;--slate:#B0A79C;--faint:#7C746A;--line:#2C2620;--line2:#241F1A;--ember:#F26B33;--ember-ink:#F58A5B;--ember-tint:#2A180E;--ok:#54D98A;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);line-height:1.62;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
+.mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+a{color:inherit}
+.wrap{max-width:940px;margin:0 auto;padding:0 22px}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0;gap:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.2px;font-size:16px}
+.mark{width:22px;height:22px;border-radius:6px;background:var(--ember);position:relative;flex:none;
+  box-shadow:0 0 0 4px var(--ember-tint)}
+.mark:after{content:"";position:absolute;inset:6px 6px auto 6px;height:4px;border-radius:2px;background:#fff;opacity:.9}
+.brand .sub{color:var(--faint);font-weight:500;font-size:12.5px}
+.navcta{font-size:13px;font-weight:700;color:var(--ember-ink);text-decoration:none}
+.hero{padding:34px 0 12px}
+.eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ember-ink);font-weight:700}
+h1{font-size:clamp(30px,5.4vw,50px);line-height:1.06;letter-spacing:-1.1px;font-weight:800;margin:14px 0 14px;max-width:16ch;text-wrap:balance}
+.lede{font-size:clamp(16px,2.2vw,20px);color:var(--slate);max-width:56ch;margin:0 0 26px}
+.cta{display:inline-flex;align-items:center;gap:9px;background:var(--ember);color:#fff;text-decoration:none;
+  font-weight:800;font-size:16px;padding:15px 28px;border-radius:12px;box-shadow:0 12px 26px -12px var(--ember);transition:transform .12s}
+.cta:hover{transform:translateY(-1px)}
+.cta.big{font-size:17px;padding:17px 32px}
+.microcta{margin-top:11px;font-size:13px;color:var(--faint)}
+.microcta b{color:var(--slate)}
+.row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+section{padding:30px 0}
+.kicker{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);font-weight:700;margin-bottom:14px}
+h2{font-size:clamp(22px,3vw,28px);letter-spacing:-.5px;font-weight:800;margin:0 0 18px;max-width:22ch}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:18px 18px 20px}
+.step .n{font-family:ui-monospace,Menlo,monospace;font-weight:700;font-size:12px;color:#fff;background:var(--ink);
+  width:24px;height:24px;border-radius:7px;display:grid;place-items:center;margin-bottom:11px}
+.step h3{font-size:15.5px;margin:0 0 5px;font-weight:800;letter-spacing:-.2px}
+.step p{margin:0;font-size:13.5px;color:var(--slate)}
+.get{display:grid;grid-template-columns:1fr 1fr;gap:11px 26px;margin:0}
+.get div{display:flex;gap:11px;font-size:15px;color:var(--ink);align-items:flex-start}
+.get svg{flex:none;margin-top:4px}
+.price{display:flex;gap:26px;flex-wrap:wrap;align-items:center;background:var(--card);border:1px solid var(--line);
+  border-radius:18px;padding:26px 28px;box-shadow:var(--shadow)}
+.price .amt{font-size:40px;font-weight:800;letter-spacing:-1.5px;line-height:1}
+.price .amt span{font-size:16px;font-weight:600;color:var(--faint);letter-spacing:0}
+.price .pb{flex:1;min-width:210px}
+.price .pb .t{font-weight:800;font-size:17px;margin-bottom:3px}
+.price .pb .d{font-size:13.5px;color:var(--slate)}
+.seats{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:11px;font-weight:700;color:var(--ember-ink);
+  background:var(--ember-tint);border-radius:999px;padding:4px 11px;margin-top:10px}
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line);padding:15px 2px}
+.faq summary{font-weight:700;font-size:15.5px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";color:var(--ember-ink);font-weight:700}
+.faq details[open] summary:after{content:"\2013"}
+.faq p{margin:10px 0 2px;color:var(--slate);font-size:14.5px;max-width:66ch}
+.foot{border-top:1px solid var(--line);margin-top:20px;padding:26px 0 60px;color:var(--faint);font-size:13px;
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.foot a{color:var(--slate);text-decoration:none}
+/* umbrella cards */
+.exps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.exp{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;text-decoration:none;color:inherit;
+  display:flex;flex-direction:column;transition:transform .12s,box-shadow .12s;box-shadow:0 1px 0 rgba(0,0,0,.02)}
+.exp:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.exp .tag{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);font-weight:700}
+.exp h3{font-size:18px;font-weight:800;letter-spacing:-.3px;margin:8px 0 4px}
+.exp p{margin:0 0 14px;font-size:13.5px;color:var(--slate);flex:1}
+.exp .go{font-weight:800;font-size:13.5px;color:var(--ember-ink)}
+@media(max-width:720px){ .steps{grid-template-columns:1fr} .get{grid-template-columns:1fr} .exps{grid-template-columns:1fr} h1{letter-spacing:-.6px} }
+</style></head>
+<body>
+<div class="wrap">
+<div class="nav">
+  <a href="./index.html" style="text-decoration:none"><span class="brand"><span class="mark"></span> kiln <span class="sub">· works</span></span></a>
+  <a class="navcta" href="REPLACE_WITH_STRIPE_LINK">Get started &rarr;</a>
+</div>
+
+<div class="hero">
+  <div class="eyebrow">For B2B founders, agencies &amp; SaaS</div>
+  <h1>Your weekly newsletter &mdash; written, ready, and sent.</h1>
+  <p class="lede">The highest-ROI channel you keep meaning to start. We run it end to end in your voice: research, draft, subject lines, send. You just approve.</p>
+  <div class="row">
+    <a class="cta big" href="REPLACE_WITH_STRIPE_LINK">Start my newsletter</a>
+    <span class="microcta"><b>$1,500/mo</b> &middot; 4 issues &middot; cancel anytime</span>
+  </div>
+</div>
+<section>
+  <div class="kicker">How it works</div>
+  <div class="steps"><div class="step"><div class="n">1</div><h3>We learn your world</h3><p>Your audience, your voice, your point of view &mdash; captured once, reused every week.</p></div><div class="step"><div class="n">2</div><h3>We research &amp; draft</h3><p>Four issues a month, each researched and written for your list, with tested subject lines.</p></div><div class="step"><div class="n">3</div><h3>You approve, we send</h3><p>A quick read and a thumbs-up. We handle the rest, every single week.</p></div></div>
+</section>
+<section>
+  <div class="kicker">What you get</div>
+  <h2>The newsletter you&rsquo;d write &mdash; if you had the time every week.</h2>
+  <div class="get"><div><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 5.5" stroke="var(--ok)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>4 issues a month, in your voice</span></div><div><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 5.5" stroke="var(--ok)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Research + drafting + editing</span></div><div><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 5.5" stroke="var(--ok)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Subject-line testing</span></div><div><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 5.5" stroke="var(--ok)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Set up on your platform</span></div><div><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 5.5" stroke="var(--ok)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>A quarterly content plan</span></div><div><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 5.5" stroke="var(--ok)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Cancel any month, no lock-in</span></div></div>
+</section>
+<section>
+  <div class="kicker">The offer</div>
+  <div class="price">
+    <div class="amt">$1,500<span>/mo</span></div>
+    <div class="pb"><div class="t">Founding member</div><div class="d">Intro rate while we prove it out. Most clients never leave a newsletter once it&rsquo;s running.</div><div class="seats">10 founding seats</div></div>
+    <a class="cta" href="REPLACE_WITH_STRIPE_LINK">Start my newsletter</a>
+  </div>
+</section>
+<section>
+  <div class="kicker">Questions</div>
+  <div class="faq"><details><summary>Who actually writes it?</summary><p>A human editor, with AI doing the heavy lifting on research and first drafts &mdash; all in your voice. You get the quality of a staff writer without the salary.</p></details><details><summary>What if I don&rsquo;t have a list yet?</summary><p>Fine. We&rsquo;ll set you up on a platform (Beehiiv, Substack, your ESP) and start building from issue one.</p></details><details><summary>How much of my time?</summary><p>About 20 minutes a week to approve. We do everything else.</p></details><details><summary>Can I cancel?</summary><p>Any month. You keep every issue and the plan.</p></details></div>
+</section>
+
+<div class="foot">
+  <span>kiln.works &middot; a small workshop for useful software &amp; services</span>
+  <span><a href="mailto:hello@kiln.works">hello@kiln.works</a></span>
+</div>
+</div>
+</body></html>
